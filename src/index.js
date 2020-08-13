@@ -1,5 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux'
+
+import newStore from './store/store'
+import {addTodo, deleteTodo, completeTodo} from './actions/todoActions'
+
+
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -7,10 +14,38 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css'; 
 import 'mdbreact/dist/css/mdb.css';
 
+
+
+const store = newStore()
+
+console.log(store.getState())
+
+store.subscribe(
+  () => console.log(store.getState())
+)
+
+store.dispatch(addTodo(
+  {
+    todo: 'Feed the cat',
+    completed: true
+  }
+))
+
+store.dispatch(addTodo(
+  {
+    todo: "Make Dinner",
+    completed: false
+  }
+))
+
+store.dispatch(deleteTodo("Feed the cat"))
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+     <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

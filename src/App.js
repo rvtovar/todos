@@ -1,11 +1,31 @@
 import React from 'react';
+import {connect} from 'react-redux'
 
-function App() {
+import Header from './components/header'
+import Form from './components/addTodo'
+
+function App(props) {
+  console.log('todos', props.todos)
   return (
     <>
-      <h1>Todos</h1>
+      <Header title="todos" />
+      <Form />
+      <hr/>
+      {
+        props.todos.map(
+          item => {
+            return <p key={Math.random()}>{item.todo}</p>
+          }
+        )
+      }
     </>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    todos: state
+  }
+}
+
+export default connect(mapStateToProps)(App);
