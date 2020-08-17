@@ -10,8 +10,8 @@ const Form = ({addTodo, checkTodo}) => {
         e.preventDefault()
         let check = checkTodo(todo)
 
-        if(check.length !== 0){
-            setError('That Todo exist')
+        if(check || !todo){
+            setError('Please Enter a Valid Todo')
         }else{
             addTodo({
                 todo,
@@ -44,7 +44,7 @@ const mapStateToProps = (state) => {
             item => {
                 return item.todo.toLowerCase() === str.toLowerCase()
             }
-        )
+        ).length !== 0
     }
 }
 

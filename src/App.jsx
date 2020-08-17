@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 
 import Header from './components/header'
 import Form from './components/addTodo'
+import Completed from './components/completed'
+import NotCompleted from './components/notCompleted'
 
 function App(props) {
   console.log('todos', props.todos)
@@ -11,13 +13,8 @@ function App(props) {
       <Header title="todos" />
       <Form />
       <hr/>
-      {
-        props.todos.map(
-          item => {
-            return <p key={Math.random()}>{item.todo}</p>
-          }
-        )
-      }
+      <Completed />
+      <NotCompleted />
     </>
   );
 }
