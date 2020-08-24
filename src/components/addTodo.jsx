@@ -22,15 +22,16 @@ const Form = ({addTodo, checkTodo}) => {
         }
     }
     return (
-        <form onSubmit={onSubmit} >
+        <form onSubmit={onSubmit} className="ext-center border border-light p-3">
             <input 
                 type="text"
                 value={todo}
                 onChange={
                     (e) => setTodo(e.target.value)
                 }
+                className="form-control mb-4"
             />
-            <button>Add Todo</button>
+            <button className="btn btn-info btn-sm">Add Todo</button>
             {error && <p>{error}</p>}
         </form>
     )

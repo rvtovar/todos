@@ -2,7 +2,10 @@ import React from 'react'
 
 const Header = ({title}) => {
     return (
-        <header>
+        <header style={{
+            textAlign:'center'
+        }}
+        >
             <h1>{title}</h1>
         </header>
     )

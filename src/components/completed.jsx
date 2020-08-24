@@ -1,16 +1,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import TodoItem from './todoItem'
 
 const Completed = ({todos}) => {
     return (
         <>
-            <h4>Completed Todos</h4>
-            <br/>
+            <h4 style={{
+                color: 'red',
+                padding: '5px'
+            }}>Completed:</h4>
             {
                 todos.map(
                 item => {
-                    return <p key={Math.random()}>{item.todo}</p>
-                }
+                    return <TodoItem key={Math.random()} item={item} /> 
+                    }
                 )
             }
         </>
